@@ -224,7 +224,8 @@ namespace SPR.AspNetCore.Identity.RavenDb
 
             try
             {
-                await CurrentAsyncSession.StoreAsync(user, CurrentAsyncSession.Advanced.GetChangeVectorFor(dbUser), cancellationToken);
+                CurrentAsyncSession.Advanced.Evict(dbUser);
+                await CurrentAsyncSession.StoreAsync(user, dbUser.Id, cancellationToken);
                 await CurrentAsyncSession.SaveChangesAsync(cancellationToken);
             }
             catch (ConcurrencyException ex)
@@ -274,7 +275,6 @@ namespace SPR.AspNetCore.Identity.RavenDb
                 UserId = user.Id
             });
 
-            await CurrentAsyncSession.StoreAsync(dbUser, CurrentAsyncSession.Advanced.GetChangeVectorFor(dbUser), cancellationToken);
             await CurrentAsyncSession.SaveChangesAsync(cancellationToken);
         }
 
@@ -298,7 +298,6 @@ namespace SPR.AspNetCore.Identity.RavenDb
             if (loginToRemove != null)
                 dbUser.Logins.Remove(loginToRemove);
 
-            await CurrentAsyncSession.StoreAsync(user, CurrentAsyncSession.Advanced.GetChangeVectorFor(dbUser), cancellationToken);
             await CurrentAsyncSession.SaveChangesAsync(cancellationToken);
         }
 
@@ -364,7 +363,6 @@ namespace SPR.AspNetCore.Identity.RavenDb
                 return res;
             }));
 
-            await CurrentAsyncSession.StoreAsync(dbUser, CurrentAsyncSession.Advanced.GetChangeVectorFor(dbUser), cancellationToken);
             await CurrentAsyncSession.SaveChangesAsync(cancellationToken);
         }
 
@@ -396,7 +394,6 @@ namespace SPR.AspNetCore.Identity.RavenDb
                 }
             }
 
-            await CurrentAsyncSession.StoreAsync(dbUser, CurrentAsyncSession.Advanced.GetChangeVectorFor(dbUser), cancellationToken);
             await CurrentAsyncSession.SaveChangesAsync(cancellationToken);
         }
 
@@ -419,7 +416,6 @@ namespace SPR.AspNetCore.Identity.RavenDb
                     dbUser.Claims.RemoveAt(i);
             }
 
-            await CurrentAsyncSession.StoreAsync(dbUser, CurrentAsyncSession.Advanced.GetChangeVectorFor(dbUser), cancellationToken);
             await CurrentAsyncSession.SaveChangesAsync(cancellationToken);
         }
 
@@ -745,7 +741,6 @@ namespace SPR.AspNetCore.Identity.RavenDb
             else
                 token.Value = value;
 
-            await CurrentAsyncSession.StoreAsync(dbUser, CurrentAsyncSession.Advanced.GetChangeVectorFor(dbUser), cancellationToken);
             await CurrentAsyncSession.SaveChangesAsync(cancellationToken);
         }
 
@@ -784,7 +779,6 @@ namespace SPR.AspNetCore.Identity.RavenDb
                     dbUser.Tokens.RemoveAt(i);
             }
 
-            await CurrentAsyncSession.StoreAsync(dbUser, CurrentAsyncSession.Advanced.GetChangeVectorFor(dbUser), cancellationToken);
             await CurrentAsyncSession.SaveChangesAsync(cancellationToken);
         }
 

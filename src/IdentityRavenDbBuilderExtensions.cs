@@ -22,33 +22,33 @@ namespace Microsoft.AspNetCore.Identity
                     .AddRavenDbUserStore<TDocumentStore>()
                     .AddRavenDbRoleStore<TDocumentStore>();
 
-            private static IdentityBuilder AddRavenDbUserStore<TDocumentStore>(
-                this IdentityBuilder builder
-            )
-            {
-                var userStoreType = typeof(RavenDbUserStore<,>).MakeGenericType(builder.UserType, typeof(TDocumentStore));
+        private static IdentityBuilder AddRavenDbUserStore<TDocumentStore>(
+            this IdentityBuilder builder
+        )
+        {
+            var userStoreType = typeof(RavenDbUserStore<,>).MakeGenericType(builder.UserType, typeof(TDocumentStore));
 
-                builder.Services.AddScoped(
-                    typeof(IUserStore<>).MakeGenericType(builder.UserType),
-                    userStoreType
-                );
+            builder.Services.AddScoped(
+                typeof(IUserStore<>).MakeGenericType(builder.UserType),
+                userStoreType
+            );
 
-                return builder;
-            }
-
-            private static IdentityBuilder AddRavenDbRoleStore<TDocumentStore>(
-                this IdentityBuilder builder
-            )
-            {
-                var roleStoreType = typeof(RavenDbRoleStore<,>).MakeGenericType(builder.RoleType, typeof(TDocumentStore));
-
-                builder.Services.AddScoped(
-                    typeof(IRoleStore<>).MakeGenericType(builder.RoleType),
-                    roleStoreType
-                );
-
-                return builder;
-            }
-
+            return builder;
         }
+
+        private static IdentityBuilder AddRavenDbRoleStore<TDocumentStore>(
+            this IdentityBuilder builder
+        )
+        {
+            var roleStoreType = typeof(RavenDbRoleStore<,>).MakeGenericType(builder.RoleType, typeof(TDocumentStore));
+
+            builder.Services.AddScoped(
+                typeof(IRoleStore<>).MakeGenericType(builder.RoleType),
+                roleStoreType
+            );
+
+            return builder;
+        }
+
+    }
 }

@@ -194,7 +194,8 @@ namespace SPR.AspNetCore.Identity.RavenDb
 
             try
             {
-                await CurrentAsyncSession.StoreAsync(role, CurrentAsyncSession.Advanced.GetChangeVectorFor(dbRole), cancellationToken);
+                CurrentAsyncSession.Advanced.Evict(dbRole);
+                await CurrentAsyncSession.StoreAsync(role, dbRole.Id, cancellationToken);
                 await CurrentAsyncSession.SaveChangesAsync(cancellationToken);
             }
             catch (ConcurrencyException ex)
