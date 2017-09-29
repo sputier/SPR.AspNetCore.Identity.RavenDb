@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <Authors>Sébastien PUTIER</Authors>
     <Company />
     <Description>This package offers the ability to use RavenDb 4.0 as a storage engine for ASP.NET Core 2.0 Identity</Description>
