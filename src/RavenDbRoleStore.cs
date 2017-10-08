@@ -1,11 +1,11 @@
+using Microsoft.AspNetCore.Identity;
+using Raven.Client.Documents;
+using Raven.Client.Documents.Session;
+using Raven.Client.Exceptions;
+using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
-using System;
-using Raven.Client.Documents.Session;
-using Raven.Client.Documents;
-using Raven.Client.Exceptions;
-using System.Linq;
 
 namespace SPR.AspNetCore.Identity.RavenDb
 {

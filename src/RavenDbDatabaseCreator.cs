@@ -1,9 +1,5 @@
 ﻿using Raven.Client.Documents;
 using Raven.Client.ServerWide.Operations;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SPR.AspNetCore.Identity.RavenDb
 {

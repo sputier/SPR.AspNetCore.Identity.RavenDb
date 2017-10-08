@@ -1,8 +1,6 @@
-using System;
-using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
 using Raven.Client.Documents;
 using SPR.AspNetCore.Identity.RavenDb;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Microsoft.AspNetCore.Identity
 {

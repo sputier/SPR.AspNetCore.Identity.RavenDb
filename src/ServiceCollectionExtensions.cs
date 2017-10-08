@@ -2,8 +2,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Raven.Client.Documents;
 using SPR.AspNetCore.Identity.RavenDb;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AspNetCore.Identity.RavenDB
 {

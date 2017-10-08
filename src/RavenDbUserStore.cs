@@ -1,14 +1,13 @@
-using System;
-using System.Text;
 using Microsoft.AspNetCore.Identity;
 using Raven.Client.Documents;
-using System.Threading.Tasks;
-using System.Threading;
 using Raven.Client.Documents.Session;
 using Raven.Client.Exceptions;
-using System.Linq;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace SPR.AspNetCore.Identity.RavenDb
 {
@@ -62,7 +61,6 @@ namespace SPR.AspNetCore.Identity.RavenDb
         where TDocumentStore : class, IDocumentStore
         where TUserClaim : IdentityUserClaim<string>, new()
         where TUserToken : IdentityUserToken<string>, new()
-        //UserStoreBase<TUser, TRole, TKey, TUserClaim, TUserRole, TUserLogin, TUserToken, TRoleClaim>,
     {
         private const string InternalLoginProvider = "[RavenDbUserStore]";
         private const string AuthenticatorKeyTokenName = "RavenDbAuthenticatorKey";
