@@ -11,7 +11,7 @@ namespace AspNetCore.Identity.RavenDB
             where TDocumentStore : class, IDocumentStore
         {
             return services.AddSingleton<RavenDbDatabaseCreator>()
-                           .AddScoped<TDocumentStore>(serviceCollection =>
+                           .AddSingleton<TDocumentStore>(serviceCollection =>
                            {
                                var store = (TDocumentStore)documentStoreFactory().Initialize();
                                serviceCollection.GetService<RavenDbDatabaseCreator>().EnsureCreated(store);
